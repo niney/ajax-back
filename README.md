@@ -1,1 +1,1 @@
-ajax history plugin À» ÀÌ¿ëÇÑ back ±¸Çö
+ajax history plugin ì„ ì´ìš©í•œ back êµ¬í˜„

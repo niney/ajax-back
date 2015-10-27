@@ -3,3 +3,10 @@
 *.iml
 *.ipr
 *.iws
+
+# Eclipse
+.project
+.metadata
+bin/**
+.classpath
+.settings/
