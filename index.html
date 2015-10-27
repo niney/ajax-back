@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.js"></script>
+    <script type="text/javascript" src="js/jquery.history.js"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function() {
+
+            // 전역
+            page = 1;
+
+            var history = new History();
+            history.initialize();
+
+            $('#btn_click').click(function(){
+                var p = page++;
+                $.ajax({
+                    url: './page.html?page=' + p,
+                    success: function (data) {
+                        $('#add').html(data);
+                    }
+                });
+            });
+
+            $('#btn_click2').click(function(){
+                var p = page++;
+                $.ajax({
+                    url: './page.html?page=' + p,
+                    success: function (data) {
+                        $('#add').html("2번째 버튼 눌었었음");
+                    }
+                });
+            });
+
+            $('#btn_click3').click(function(){
+                var p = page++;
+                $.ajax({
+                    url: './page.html?page=' + p,
+                    success: function (data) {
+                        $('#add').html("3번째 버튼 눌었었음");
+                    }
+                });
+            });
+
+            $(document).ajaxSuccess(function( event, xhr, settings ) {
+                history.push(settings.url, {xhr: xhr, settings: settings}, function (params, tag) {
+                    console.log(params + " 호출");
+                    tag.settings.success(tag.xhr.responseText);
+                })
+            });
+
+        });
+    </script>
+</head>
+<body>
+    <input type="button" id="btn_click" value="클릭1"/>
+    <input type="button" id="btn_click2" value="클릭2"/>
+    <input type="button" id="btn_click3" value="클릭3"/>
+    <div id="add">
+        1
+    </div>
+</body>
+</html>

@@ -1,0 +1,1 @@
+ajax history plugin 을 이용한 back 구현
